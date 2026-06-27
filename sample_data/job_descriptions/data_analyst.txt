@@ -1,0 +1,21 @@
+Job Title: Data Analyst
+
+We are looking for a Data Analyst with strong analytical skills.
+
+Requirements:
+- Strong knowledge of SQL
+- Experience with Python (Pandas, NumPy)
+- Data visualization using Power BI or Tableau
+- Understanding of statistics and probability
+- Ability to clean and preprocess data
+- Knowledge of Excel and reporting tools
+
+Preferred:
+- Experience with machine learning basics
+- Knowledge of business intelligence
+- Good communication skills
+
+Responsibilities:
+- Analyze large datasets
+- Build dashboards and reports
+- Generate insights for business decisions

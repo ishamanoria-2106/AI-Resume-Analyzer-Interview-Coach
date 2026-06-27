@@ -1,0 +1,21 @@
+Job Title: Backend Developer
+
+We are seeking a Backend Developer.
+
+Requirements:
+- Strong knowledge of Python / Java / Node.js
+- Experience with REST APIs
+- Knowledge of databases (SQL, PostgreSQL, MongoDB)
+- Understanding of authentication systems
+- Experience with Git and version control
+
+Preferred:
+- Cloud deployment knowledge (AWS, Azure)
+- Docker basics
+- System design understanding
+
+Responsibilities:
+- Build backend services
+- Design APIs
+- Maintain databases
+- Ensure performance and scalability

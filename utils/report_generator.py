@@ -11,30 +11,105 @@ from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 from datetime import datetime
 
-def format_content(text):
+from reportlab.lib.units import mm
+
+def add_page_number(canvas, doc):
+    canvas.saveState()
+
+    canvas.setFont(
+        "Helvetica",
+        9
+    )
+
+    canvas.drawRightString(
+        200 * mm,
+        10 * mm,
+        f"AI Resume Analyzer | Page {doc.page}"
+    )
+
+    canvas.restoreState()
+
+from reportlab.platypus import Paragraph, Spacer
+
+def add_formatted_text(elements, text, styles):
+
+    if not text:
+        return
 
     lines = text.split("\n")
-
-    formatted = []
 
     for line in lines:
 
         line = line.strip()
 
-        if not line:
+        # Blank line
+        if line == "":
+            elements.append(Spacer(1, 8))
             continue
 
-        if line.startswith("-"):
+        # Markdown headings
+        if line.startswith("#"):
 
-            formatted.append(
-                f"• {line[1:].strip()}"
+            heading = line.replace("#", "").strip()
+
+            elements.append(
+                Paragraph(
+                    f"<b>{heading}</b>",
+                    styles["Heading2"]
+                )
             )
 
-        else:
+            elements.append(
+                Spacer(1, 10)
+            )
 
-            formatted.append(line)
+            continue
 
-    return "<br/>".join(formatted)
+        # Bullets
+        if (
+            line.startswith("-")
+            or line.startswith("*")
+            or line.startswith("•")
+        ):
+
+            bullet = line.lstrip("-*• ").strip()
+
+            elements.append(
+                Paragraph(
+                    f"• {bullet}",
+                    styles["BodyText"]
+                )
+            )
+
+            continue
+
+        # Numbered items
+        if (
+            len(line) > 2
+            and line[0].isdigit()
+            and line[1] == "."
+        ):
+
+            elements.append(
+                Paragraph(
+                    line,
+                    styles["BodyText"]
+                )
+            )
+
+            continue
+
+        # Normal paragraph
+        elements.append(
+            Paragraph(
+                line,
+                styles["BodyText"]
+            )
+        )
+
+        elements.append(
+            Spacer(1, 5)
+        )
 
 def generate_pdf_report(
     ats_result,
@@ -48,22 +123,125 @@ def generate_pdf_report(
 
     styles = getSampleStyleSheet()
 
+    styles["BodyText"].leading = 18
+    styles["BodyText"].spaceAfter = 6
+
+    styles["Heading1"].spaceBefore = 12
+    styles["Heading1"].spaceAfter = 12
+
+    styles["Heading2"].spaceBefore = 8
+    styles["Heading2"].spaceAfter = 8
+
     elements = []
 
-    # ==========================
-    # TITLE
-    # ==========================
+    #==========================
+    # COVER PAGE
+    #==========================
+
+    elements.append(
+        Spacer(1, 120)
+    )
 
     elements.append(
         Paragraph(
-            "AI Resume Analyzer Report",
+            "<font size=28><b>AI Resume Analyzer</b></font>",
             styles["Title"]
         )
     )
 
     elements.append(
+        Spacer(1, 12)
+    )
+
+    elements.append(
         Paragraph(
-            f"Generated on: {datetime.now().strftime('%d %B %Y')}",
+            "<font size=18>Professional Resume Analysis Report</font>",
+            styles["Heading2"]
+        )
+    )
+
+    elements.append(
+        Spacer(1, 40)
+    )
+
+    elements.append(
+        Paragraph(
+            f"<b>Report Generated:</b> {datetime.now().strftime('%d %B %Y')}",
+            styles["BodyText"]
+        )
+    )
+
+    elements.append(
+        Spacer(1, 20)
+    )
+
+    elements.append(
+        Paragraph(
+            "<b>Powered By:</b> Gemini AI • ATS Analyzer • AI Interview Coach",
+            styles["BodyText"]
+        )
+    )
+
+    elements.append(
+        Spacer(1, 40)
+    )
+
+    elements.append(
+        Paragraph(
+            """
+            This report provides a comprehensive evaluation of your resume,
+            ATS compatibility, AI-powered analysis, personalized interview
+            questions, and a customized learning roadmap.
+            """,
+            styles["BodyText"]
+        )
+    )
+
+    elements.append(
+        Spacer(1, 150)
+    )
+
+    elements.append(
+        Paragraph(
+            "<i>Prepared using AI Resume Analyzer & Interview Coach</i>",
+            styles["Italic"]
+        )
+    )
+
+    elements.append(PageBreak())
+
+    #==========================
+    # CANDIDATE SUMMARY
+    #==========================
+
+    elements.append(
+        Paragraph(
+            "Candidate Summary",
+            styles["Heading1"]
+        )
+    )
+
+    resume_words = len(
+        ai_analysis.split()
+    ) if ai_analysis else 0
+
+    elements.append(
+        Paragraph(
+            f"<b>Resume Analysis Length:</b> {resume_words} words",
+            styles["BodyText"]
+        )
+    )
+
+    elements.append(
+        Paragraph(
+            f"<b>Interview Questions:</b> Generated",
+            styles["BodyText"]
+        )
+    )
+
+    elements.append(
+        Paragraph(
+            f"<b>Learning Roadmap:</b> Personalized",
             styles["BodyText"]
         )
     )
@@ -131,7 +309,11 @@ def generate_pdf_report(
 
                 ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
 
-                ("BACKGROUND", (0, 1), (-1, -1), colors.whitesmoke),
+                ("BACKGROUND", (0, 1), (-1, -1), colors.beige),
+                ("BOTTOMPADDING", (0, 0), (-1, 0), 10),
+                ("TOPPADDING", (0, 1), (-1, -1), 8),
+                ("BOTTOMPADDING", (0, 1), (-1, -1), 8),
+                ("ALIGN", (1, 1), (-1, -1), "CENTER"),
             ]
         )
     )
@@ -154,16 +336,15 @@ def generate_pdf_report(
 
     elements.append(
         Paragraph(
-            "AI Resume Analysis",
+            "Resume Analysis & Recommendation",
             styles["Heading1"]
         )
     )
 
-    elements.append(
-        Paragraph(
-            format_content(ai_analysis),
-            styles["BodyText"]
-        )
+    add_formatted_text(
+        elements,
+        ai_analysis,
+        styles
     )
 
     elements.append(
@@ -176,16 +357,15 @@ def generate_pdf_report(
 
     elements.append(
         Paragraph(
-            "Interview Questions",
+            "Personalized Interview Preparation",
             styles["Heading1"]
         )
     )
 
-    elements.append(
-        Paragraph(
-            format_content(interview_questions),
-            styles["BodyText"]
-        )
+    add_formatted_text(
+        elements,
+        interview_questions,
+        styles
     )
 
     elements.append(
@@ -204,16 +384,15 @@ def generate_pdf_report(
 
     elements.append(
         Paragraph(
-            "Learning Roadmap",
+            "90-Day Learning Roadmap",
             styles["Heading1"]
         )
     )
 
-    elements.append(
-        Paragraph(
-            format_content(roadmap),
-            styles["BodyText"]
-        )
+    add_formatted_text(
+        elements,
+        roadmap,
+        styles
     )
 
     elements.append(
@@ -231,6 +410,10 @@ def generate_pdf_report(
         )
     )
 
-    doc.build(elements)
+    doc.build(
+        elements,
+        onFirstPage=add_page_number,
+        onLaterPages=add_page_number
+    )
 
     return output_path

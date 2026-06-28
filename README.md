@@ -341,35 +341,39 @@ Generate Final PDF Report
 
 # 📸 Application Screenshots
 
-> **Note:** Screenshots will be updated after the final UI enhancement phase.
-
 ## 🏠 Home Page
 
-![Home Page](assets/screenshots/home.png)
+![Home Page](assets/screenshots/Home Page.png)
 
 ---
 
 ## 📤 Resume Upload
 
-![Upload Page](assets/screenshots/upload.png)
+![Upload Resume](assets/screenshots/Resume Upload.png)
 
 ---
 
-## 📊 ATS Analysis Dashboard
+## 📊 Resume Analysis Dashboard
 
-![Analysis Page](assets/screenshots/analysis.png)
-
----
-
-## 🎤 Interview Coach
-
-![Interview Page](assets/screenshots/interview.png)
+![Analysis Dashboard](assets/screenshots/Resume analysis dashboard.png)
 
 ---
 
-## 📑 Final Report
+## 🎤 AI Interview Coach
 
-![Report Page](assets/screenshots/report.png)
+![Interview Coach](assets/screenshots/AI Interview coach.png)
+
+---
+
+## 📚 Learning Roadmap
+
+![Learning Roadmap](assets/screenshots/Learning roadmap.png)
+
+---
+
+## 📑 PDF Report
+
+![PDF Report](assets/screenshots/PDF Report.png)
 
 ---
 

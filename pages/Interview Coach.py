@@ -1,5 +1,9 @@
 import streamlit as st
 
+from utils.session_state import initialize_session_state
+
+initialize_session_state()
+
 from utils.gemini_client import GeminiClient
 
 # ------------------------------------------------

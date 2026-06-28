@@ -1,6 +1,10 @@
 import streamlit as st
 import tempfile
 
+from utils.session_state import initialize_session_state
+
+initialize_session_state()
+
 from utils.pdf_parser import parse_resume
 
 # ------------------------------------------------

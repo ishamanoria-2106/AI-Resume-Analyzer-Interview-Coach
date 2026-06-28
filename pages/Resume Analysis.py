@@ -1,6 +1,10 @@
 import streamlit as st
 import plotly.graph_objects as go
 
+from utils.session_state import initialize_session_state
+
+initialize_session_state()
+
 from utils.ats_score import ATSScorer
 from utils.gemini_client import GeminiClient
 

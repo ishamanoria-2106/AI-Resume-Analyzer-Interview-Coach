@@ -343,37 +343,37 @@ Generate Final PDF Report
 
 ## 🏠 Home Page
 
-![Home Page](assets/screenshots/Home Page.png)
+![Home Page](assets/screenshots/home.png)
 
 ---
 
 ## 📤 Resume Upload
 
-![Upload Resume](assets/screenshots/Resume Upload.png)
+![Upload Resume](assets/screenshots/upload.png)
 
 ---
 
 ## 📊 Resume Analysis Dashboard
 
-![Analysis Dashboard](assets/screenshots/Resume analysis dashboard.png)
+![Analysis Dashboard](assets/screenshots/analysis.png)
 
 ---
 
 ## 🎤 AI Interview Coach
 
-![Interview Coach](assets/screenshots/AI Interview coach.png)
+![Interview Coach](assets/screenshots/interview.png)
 
 ---
 
 ## 📚 Learning Roadmap
 
-![Learning Roadmap](assets/screenshots/Learning roadmap.png)
+![Learning Roadmap](assets/screenshots/roadmap.png)
 
 ---
 
 ## 📑 PDF Report
 
-![PDF Report](assets/screenshots/PDF Report.png)
+![PDF Report](assets/screenshots/report.png)
 
 ---
 

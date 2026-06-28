@@ -1,10 +1,29 @@
-# 📄 AI Resume Analyzer & Interview Coach
+# 🤖 AI Resume Analyzer & Interview Coach
 
-An AI-powered web application that analyzes resumes against job descriptions using ATS scoring, semantic embeddings, and Google's Gemini AI.
+An AI-powered web application that evaluates resumes using **ATS scoring**, **semantic similarity**, and **Google Gemini AI** to help job seekers optimize their resumes, prepare for interviews, and build personalized learning roadmaps.
 
-It helps job seekers improve their resumes, identify missing skills, prepare for interviews, and generate personalized learning roadmaps.
+## 🌐 Live Demo
+
+**Live Application:** https://ai-resume-analyzer-interview-coach-y394mvepqqpxgothhvjal2.streamlit.app/
+
+## ✨ Key Features
+
+* 📄 Upload Resume (PDF)
+* 💼 Analyze against any Job Description
+* 📊 ATS Compatibility Score
+* 🤖 AI-powered Resume Review
+* 🎯 Missing Skills Detection
+* 🎤 Personalized Interview Questions
+* 📚 Learning Roadmap Generation
+* 📑 Professional PDF Report
+* 📈 Interactive Analytics Dashboard
 
 ---
+
+## 📸 Project Preview
+
+*(Screenshots are shown below in this README.)*
+
 
 ## 🚀 Features
 

@@ -411,7 +411,7 @@ GEMINI_API_KEY="your_api_key"
 After deployment, Streamlit will generate a public URL:
 
 ```
-https://your-app-name.streamlit.app
+https://ai-resume-analyzer-interview-coach-y394mvepqqpxgothhvjal2.streamlit.app/
 ```
 
 ---
